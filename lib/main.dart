@@ -2,6 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/widgets.dart';
+import 'screen/screen_1.dart';
+import 'screen/screen_2.dart';
+import 'screen/screen_3.dart';
+import 'screen/screen_4.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,42 +18,18 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Registrame',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a purple toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.red.shade300),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'Registrame',),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
 
   final String title;
 
@@ -58,30 +38,94 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
+   
   
 
   @override
   Widget build(BuildContext context) {
-    
 
     return Scaffold(
       appBar: AppBar(
-        
+        leading: 
+              Padding(
+              padding: const EdgeInsets.all(0.0),
+              child: Builder(
+                builder: (context) {
+                  return IconButton(
+                    onPressed: ()=> Scaffold.of(context).openDrawer(),
+                    icon: const Icon(Icons.menu
+                    ));
+                }
+              ),
+            ),
+        shape: const RoundedRectangleBorder(borderRadius: BorderRadius.vertical(bottom: Radius.circular(30))),
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-     
+       centerTitle: true,
         title: Text(widget.title),
       ),
+
+  drawer: Drawer(
+              elevation: 20.0,
+              child: ListView(
+                padding: EdgeInsets.zero,
+                children: [
+                  SizedBox(
+                    height: 80,
+                  ),
+              SizedBox(
+                height: 50,
+                    child: Icon(Icons.account_circle_outlined)
+                      ),
+                      Divider(
+                        height: 2.0,
+                      ),
+                      ListTile(
+                        leading: Icon(Icons.account_circle),
+                        title: Text('Drawer layout Item 1'),
+                        onTap: ()=> _navigateToNextScreen1(context),
+                      ),
+                      Divider(
+                        height: 2.0,
+                      ),
+                      ListTile(
+                        leading: Icon(Icons.accessibility),
+                        title: Text('Drawer layout Item 2'),
+                        onTap: ()=> _navigateToNextScreen2(context),
+                      ),
+                      Divider(
+                        height: 2.0,
+                      ),
+                      ListTile(
+                        leading: Icon(Icons.account_box),
+                        title: Text('Drawer layout Item 3'),
+                        onTap: ()=> _navigateToNextScreen3(context),
+                      ),
+                      Divider(
+                        height: 2.0,
+                      ),
+                       ListTile(
+                        leading: Icon(Icons.account_circle),
+                        title: Text('Drawer layout Item 4'),
+                        onTap: ()=> _navigateToNextScreen4(context),
+                      ),
+                      
+                    ],
+                  ),
+              ),
+
+
+
+
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Center(
+            Padding(
 
+      padding: const EdgeInsets.all(5),
       child: Card(
         shape: RoundedRectangleBorder(
-    borderRadius: BorderRadius.circular(20.0),),
+    borderRadius: BorderRadius.circular(30.0),),
         margin: const EdgeInsetsDirectional.all(5.0),
-        color: Colors.amber,
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
@@ -95,15 +139,30 @@ class _MyHomePageState extends State<MyHomePage> {
               children: <Widget>[
                 TextButton(
                   child: const Text('BUY TICKETS'),
-                  onPressed: () {
-                    /* ... */
-                  },
+                  onPressed: () => showDialog(
+                    context: context,
+                    builder: (BuildContext context) => AlertDialog(
+                      title: const Text('AlertDialog Title'),
+                      content: const Text('AlertDialog description'),
+                      actions: <Widget>[
+                    TextButton(
+                      onPressed: () => Navigator.pop(context, 'Cancel'),
+                      child: const Text('Cancel'),
+                    ),
+                    TextButton(
+                      onPressed: () {},
+                      child: const Text('OK'),
+                    ),
+                  ],
+                ),)
                 ),
                 const SizedBox(width: 8),
                 TextButton(
                   child: const Text('LISTEN'),
                   onPressed: () {
-                    /* ... */
+                    setState(() {
+                      
+                    });
                   },
                 ),
                 const SizedBox(width: 8),
@@ -119,6 +178,18 @@ class _MyHomePageState extends State<MyHomePage> {
         
         ),
       ),
-    );
+    ); 
+  }
+   void _navigateToNextScreen1(BuildContext context) {
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => Screen_1()));
+  }
+    void _navigateToNextScreen2(BuildContext context) {
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => Screen_2()));
+  }
+    void _navigateToNextScreen3(BuildContext context) {
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => Screen_3()));
+  }
+  void _navigateToNextScreen4(BuildContext context) {
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => Screen_4()));
   }
 }

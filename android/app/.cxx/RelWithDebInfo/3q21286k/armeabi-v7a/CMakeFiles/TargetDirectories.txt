@@ -1,0 +1,2 @@
+/Users/ario/Project/app_lia_v1/android/app/.cxx/RelWithDebInfo/3q21286k/armeabi-v7a/CMakeFiles/edit_cache.dir
+/Users/ario/Project/app_lia_v1/android/app/.cxx/RelWithDebInfo/3q21286k/armeabi-v7a/CMakeFiles/rebuild_cache.dir

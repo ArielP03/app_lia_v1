@@ -7,11 +7,18 @@ class Screen_3 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('New Screen')),
-      body: const Center(
-        child: Text(
-          'This is a new screen 3',
-          style: TextStyle(fontSize: 24.0),
+      appBar: AppBar(title: const Text('Procedimientos Inmatriculadores')),
+      body: Padding(
+        padding: const EdgeInsets.only(left:15,right:10,top:10 ),
+        child: Column(
+          children: [
+            const Center(
+              child: Text(
+                ' 1.	El Expediente de Dominio. \n 2.	La inscripción en virtud de los títulos públicos complementados con un acta de notoriedad. \n 3.	La inmatriculación en virtud de certificaciones expedidas por entidades de derecho público.',
+                style: TextStyle(fontSize: 15.0),
+              ),
+            ),
+          ],
         ),
       ),
     );

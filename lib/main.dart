@@ -1,7 +1,5 @@
-import 'package:flutter/cupertino.dart';
+import 'package:app_lia_v1/screen/screen_registrame.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
-import 'package:flutter/widgets.dart';
 import 'screen/screen_1.dart';
 import 'screen/screen_2.dart';
 import 'screen/screen_3.dart';
@@ -20,7 +18,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Registrame',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.red.shade300),
+        colorScheme: ColorScheme.fromSeed(seedColor:  const Color.fromARGB(255, 245, 200, 200)),
         useMaterial3: true,
       ),
       home: const MyHomePage(title: 'Registrame',),
@@ -63,7 +61,10 @@ class _MyHomePageState extends State<MyHomePage> {
        centerTitle: true,
         title: Text(widget.title),
       ),
-
+floatingActionButton: FloatingActionButton(
+  onPressed: ()=>_navigateToNextScreenRegistrame(context),
+  child: Icon(Icons.home_sharp),
+  ),
   drawer: Drawer(
               elevation: 20.0,
               child: ListView(
@@ -80,32 +81,28 @@ class _MyHomePageState extends State<MyHomePage> {
                         height: 2.0,
                       ),
                       ListTile(
-                        leading: Icon(Icons.account_circle),
-                        title: Text('Drawer layout Item 1'),
+                        title: Text('Sistemas de inscripción'),
                         onTap: ()=> _navigateToNextScreen1(context),
                       ),
                       Divider(
                         height: 2.0,
                       ),
                       ListTile(
-                        leading: Icon(Icons.accessibility),
-                        title: Text('Drawer layout Item 2'),
+                        title: Text('Principios Registrales'),
                         onTap: ()=> _navigateToNextScreen2(context),
                       ),
                       Divider(
                         height: 2.0,
                       ),
                       ListTile(
-                        leading: Icon(Icons.account_box),
-                        title: Text('Drawer layout Item 3'),
+                        title: Text('Procedimientos Inmatriculadores'),
                         onTap: ()=> _navigateToNextScreen3(context),
                       ),
                       Divider(
                         height: 2.0,
                       ),
                        ListTile(
-                        leading: Icon(Icons.account_circle),
-                        title: Text('Drawer layout Item 4'),
+                        title: Text('Asientos Registrales'),
                         onTap: ()=> _navigateToNextScreen4(context),
                       ),
                       
@@ -116,67 +113,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
 
 
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Padding(
-
-      padding: const EdgeInsets.all(5),
-      child: Card(
-        shape: RoundedRectangleBorder(
-    borderRadius: BorderRadius.circular(30.0),),
-        margin: const EdgeInsetsDirectional.all(5.0),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            const ListTile(
-              leading: Icon(Icons.account_balance_outlined),
-              title: Text('The Enchanted Nightingale'),
-              subtitle: Text('Music by Julie Gable. Lyrics by Sidney Stein.'),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: <Widget>[
-                TextButton(
-                  child: const Text('BUY TICKETS'),
-                  onPressed: () => showDialog(
-                    context: context,
-                    builder: (BuildContext context) => AlertDialog(
-                      title: const Text('AlertDialog Title'),
-                      content: const Text('AlertDialog description'),
-                      actions: <Widget>[
-                    TextButton(
-                      onPressed: () => Navigator.pop(context, 'Cancel'),
-                      child: const Text('Cancel'),
-                    ),
-                    TextButton(
-                      onPressed: () {},
-                      child: const Text('OK'),
-                    ),
-                  ],
-                ),)
-                ),
-                const SizedBox(width: 8),
-                TextButton(
-                  child: const Text('LISTEN'),
-                  onPressed: () {
-                    setState(() {
-                      
-                    });
-                  },
-                ),
-                const SizedBox(width: 8),
-        
-        
-          ],
-          )
-          ],
-          )
-          )
-          )
-          ]
-        
-        ),
+      body: Padding(
+        padding: EdgeInsets.only(top: 5),
+        child: Image.asset('lib/src/background-2.JPG'),
       ),
     ); 
   }
@@ -191,5 +130,8 @@ class _MyHomePageState extends State<MyHomePage> {
   }
   void _navigateToNextScreen4(BuildContext context) {
     Navigator.of(context).push(MaterialPageRoute(builder: (context) => Screen_4()));
+  }
+   void _navigateToNextScreenRegistrame(BuildContext context) {
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => FormularioPage()));
   }
 }
